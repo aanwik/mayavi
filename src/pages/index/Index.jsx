@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useDocumentTitle } from 'xooks';
 import ToolCard from './ToolCard/ToolCard';
-import PageBase from '../../components/PageBase/PageBase';
 import settings from '../../settings';
 import classes from './Index.styles.less';
+
+const PageBase = React.lazy(() => import('../../components/PageBase/PageBase'));
 
 export default function Index() {
   useDocumentTitle('Mayavi');
@@ -13,8 +14,12 @@ export default function Index() {
   ));
 
   return (
-    <PageBase>
-      <div className={classes.tools}>{tools}</div>
-    </PageBase>
+    <Suspense fallback={
+      <div class="loader"></div>
+    }>
+      <PageBase>
+        <div className={classes.tools}>{tools}</div>
+      </PageBase>
+    </Suspense>
   );
 }
