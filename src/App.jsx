@@ -5,9 +5,9 @@ import { hot } from 'react-hot-loader';
 import ThemeProvider from './ThemeProvider';
 import AppContainer from './components/AppContainer/AppContainer';
 
-import Index from './pages/index/Index';
-import About from './pages/about/About';
-import NotFound from './pages/not-found/NotFound';
+const Index = React.lazy(() => import('./pages/index/Index'));
+const About = React.lazy(() => import('./pages/about/About'));
+const NotFound = React.lazy(() => import('./pages/not-found/NotFound'));
 
 import TriangleGenerator from './apps/triangle-generator/TriangleGenerator';
 import LoremIpsum from './apps/lorem-ipsum/LoremIpsum';
