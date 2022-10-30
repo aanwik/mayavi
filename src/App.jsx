@@ -7,34 +7,34 @@ import ThemeProvider from './ThemeProvider';
 
 const AppContainer = React.lazy(() => import('./components/AppContainer/AppContainer'));
 
-import Index from './pages/index/Index';
-import About from './pages/about/About';
-import NotFound from './pages/not-found/NotFound';
+const Index = React.lazy(() => import('./pages/index/Index'));
+const About = React.lazy(() => import('./pages/about/About'));
+const NotFound = React.lazy(() => import('./pages/not-found/NotFound'));
 
-import TriangleGenerator from './apps/triangle-generator/TriangleGenerator';
-import LoremIpsum from './apps/lorem-ipsum/LoremIpsum';
-import SvgCompressor from './apps/svg-compressor/SvgCompressor';
-import SvgToJsx from './apps/svg-to-jsx/SvgToJsx';
-import HtmlSymbols from './apps/html-symbols/HtmlSymbols';
-import Base64Encoding from './apps/b64-encoding/B64Encoding';
-import ColorShadesGenerator from './apps/color-shades-generator/ColorShadesGenerator';
-import PageDividers from './apps/page-dividers/PageDividers';
-import FakeDataGenerator from './apps/fake-data-generator/FakeDataGenerator';
-import CssCursors from './apps/css-cursors/CssCursors';
-import EventsKeycode from './apps/events-keycode/EventsKeycode';
-import GradientGenerator from './apps/gradient-generator/GradientGenerator';
+const TriangleGenerator = React.lazy(() => import('./apps/triangle-generator/TriangleGenerator'));
+const LoremIpsum = React.lazy(() => import('./apps/lorem-ipsum/LoremIpsum'));
+const SvgCompressor = React.lazy(() => import('./apps/svg-compressor/SvgCompressor'));
+const SvgToJsx = React.lazy(() => import('./apps/svg-to-jsx/SvgToJsx'));
+const HtmlSymbols = React.lazy(() => import('./apps/html-symbols/HtmlSymbols'));
+const Base64Encoding = React.lazy(() => import('./apps/b64-encoding/B64Encoding'));
+const ColorShadesGenerator = React.lazy(() => import('./apps/color-shades-generator/ColorShadesGenerator'));
+const PageDividers = React.lazy(() => import('./apps/page-dividers/PageDividers'));
+const FakeDataGenerator = React.lazy(() => import('./apps/fake-data-generator/FakeDataGenerator'));
+const CssCursors = React.lazy(() => import('./apps/css-cursors/CssCursors'));
+const EventsKeycode = React.lazy(() => import('./apps/events-keycode/EventsKeycode'));
+const GradientGenerator = React.lazy(() => import('./apps/gradient-generator/GradientGenerator'));
 
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Index} />
-          <Route path="/about" exact component={About} />
-          <Route>
-            <Suspense fallback={
-              <div class="loader"></div>
-            }>
+        <Suspense fallback={
+          <div class="loader"></div>
+        }>
+          <Switch>
+            <Route path="/" exact component={Index} />
+            <Route path="/about" exact component={About} />
+            <Route>
               <AppContainer>
                 <Switch>
                   <Route path="/triangle-generator" exact component={TriangleGenerator} />
@@ -52,9 +52,9 @@ function App() {
                   <Route component={NotFound} />
                 </Switch>
               </AppContainer>
-            </Suspense>
-          </Route>
-        </Switch>
+            </Route>
+          </Switch>
+        </Suspense>
       </BrowserRouter>
     </ThemeProvider>
   );
